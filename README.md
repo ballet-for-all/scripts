@@ -2,7 +2,7 @@
 
 모두의 발레에서 사용될 Firebase 에 접근하는 스크립트입니다.
 
-Firebase service account key 는 모두의 발레 구글 드라이브의 개발 폴더에서 다운로드 받을 수 있습니다.
+Firebase service account 파일은 모두의 발레 구글 드라이브의 개발 폴더에서 다운로드 받을 수 있습니다.
 
 다운로드 후 `firebase/ballet-for-all-project-9365caabf1ba.json` 에 위치시키면 됩니다.
 
@@ -19,4 +19,16 @@ Firebase service account key 는 모두의 발레 구글 드라이브의 개발 
 
 ```bash
 $ python cities-csv-to-json/cities-csv-to-json.py
+```
+
+## cities-json-to-firestore
+
+cities-csv-to-json 으로 생성된 json 파일을 firestore 에 업로드 합니다.
+
+Firestore 접근을 위해 Firebase sevice account 파일이 필요합니다.
+
+### 사용법
+
+```bash
+$ python cities-json-to-firestore/cities-json-to-firestore.py
 ```
