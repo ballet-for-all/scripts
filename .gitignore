@@ -1,2 +1,2 @@
-*.csv
-*.json
+cities-csv-to-json/*.csv
+cities-csv-to-json/*.json
