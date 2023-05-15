@@ -18,7 +18,7 @@ Firebase service account 파일은 모두의 발레 구글 드라이브의 개�
 해당 파일을 cities-csv-to-json/cities.csv에 위치시킨 후 아래 명령어를 실행합니다.
 
 ```bash
-$ python cities-csv-to-json/cities-csv-to-json.py
+$ python cities-csv-to-json/script.py
 ```
 
 ## cities-json-to-firestore
@@ -30,5 +30,5 @@ Firestore 접근을 위해 Firebase sevice account 파일이 필요합니다.
 ### 사용법
 
 ```bash
-$ python cities-json-to-firestore/cities-json-to-firestore.py
+$ python cities-json-to-firestore/script.py
 ```
