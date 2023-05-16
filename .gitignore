@@ -1,5 +1,6 @@
 # Firebase service account
 firebase/ballet-for-all-project-9365caabf1ba.json
 
+academies-json-to-firestore/*.json
 cities-csv-to-json/*.csv
 cities-csv-to-json/*.json
