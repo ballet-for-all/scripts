@@ -1,4 +1,4 @@
-from schedule import Schedule
+from model.schedule import Schedule
 
 
 class Clazz(object):

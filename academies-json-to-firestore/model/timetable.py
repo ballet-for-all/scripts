@@ -1,4 +1,4 @@
-from clazz import Clazz
+from model.clazz import Clazz
 
 
 class Timetable(object):
