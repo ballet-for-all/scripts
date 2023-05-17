@@ -1,5 +1,8 @@
 import json
 import requests
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
 
 from model.academy import Academy
 from model.location import Location
@@ -8,6 +11,15 @@ ACADEMIES_JSON_FILE_PATH = 'academies-json-to-firestore/academies.json'
 ADDRESS_SEARCH_API = "https://dapi.kakao.com/v2/local/search/address.json"
 KAKAO_CREDENTIAL_PATH = "credentials/kakao/kakao-key.json"
 KAKAO_REST_API_KEY = "rest_api_key"
+FIREBASE_SERVICE_ACCOUNT_PATH = 'credentials/firebase/ballet-for-all-project-9365caabf1ba.json'
+
+
+def initialize_firebase():
+    try:
+        app = firebase_admin.get_app()
+    except ValueError as e:
+        cred = credentials.Certificate(FIREBASE_SERVICE_ACCOUNT_PATH)
+        firebase_admin.initialize_app(cred)
 
 
 def get_kakao_rest_api_key():
@@ -46,12 +58,21 @@ def search_location(address_str, kakao_rest_api_key):
     return Location(lng, lat, block)
 
 
+def save_to_firestore(academy):
+    db = firestore.client()
+    db.collection(u'academies').add(academy.to_dict())
+    print(f'{academy.name} is saved')
+
+
 def main():
+    initialize_firebase()
     kakao_rest_api_key = get_kakao_rest_api_key()
 
     academies = read_academies_from_json()
     for academy in academies:
         add_location_to_academy(academy, kakao_rest_api_key)
+    for academy in academies:
+        save_to_firestore(academy)
 
 
 if __name__ == '__main__':

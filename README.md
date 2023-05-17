@@ -42,3 +42,17 @@ Firestore 접근을 위해 Firebase sevice account 파일이 필요합니다.
 ```bash
 $ python cities-json-to-firestore/script.py
 ```
+
+## academies-json-to-firestore
+
+학원 정보를 담고 있는 json 파일을 firestore 에 업로드 합니다.
+
+위치 정보를 저장하기 위해 kakao-key.json 파일이 필요합니다.
+
+Firestore 접근을 위해 Firebase sevice account 파일이 필요합니다.
+
+### 사용법
+
+```bash
+$ python academies-json-to-firestore/script.py
+```
