@@ -1,8 +1,8 @@
-from teacher import Teacher
-from sns import Sns
-from pricing import Pricing
-from location import Location
-from timetable import Timetable
+from model.teacher import Teacher
+from model.sns import Sns
+from model.pricing import Pricing
+from model.location import Location
+from model.timetable import Timetable
 
 
 class Academy(object):
