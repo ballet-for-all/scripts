@@ -4,7 +4,7 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 
 CITIES_JSON_FILE_PATH = 'cities-csv-to-json/cities.json'
-FIREBASE_SERVICE_ACCOUNT_PATH = 'firebase/ballet-for-all-project-9365caabf1ba.json'
+FIREBASE_SERVICE_ACCOUNT_PATH = 'credentials/firebase/ballet-for-all-project-9365caabf1ba.json'
 
 
 def read_cities_from_json():
