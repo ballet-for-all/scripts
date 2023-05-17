@@ -2,9 +2,19 @@
 
 모두의 발레에서 사용될 Firebase 에 접근하는 스크립트입니다.
 
+## Credentials
+
+### Firebase
+
 Firebase service account 파일은 모두의 발레 구글 드라이브의 개발 폴더에서 다운로드 받을 수 있습니다.
 
-다운로드 후 `firebase/ballet-for-all-project-9365caabf1ba.json` 에 위치시키면 됩니다.
+다운로드 후 `credentials/firebase/ballet-for-all-project-9365caabf1ba.json` 에 위치시키면 됩니다.
+
+### Kakao
+
+kakao-key.json 파일은 모두의 발레 구글 드라이브의 개발 폴더에서 다운로드 받을 수 있습니다.
+
+다운로드 후 `credentials/kakao/kakao-key.json` 에 위치시키면 됩니다.
 
 ## cities-csv-to-json
 
