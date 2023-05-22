@@ -53,14 +53,34 @@ def search_location(address_str, kakao_rest_api_key):
     address = documents[0]
     lng = float(address['x'])
     lat = float(address['y'])
+    city = address['address']['region_1depth_name']
+    district = address['address']['region_2depth_name']
     block = address['address']['region_3depth_name']
 
-    return Location(lng, lat, block)
+    location_dict = {
+        'longitude': lng,
+        'latitude': lat,
+        'city': city,
+        'district': district,
+        'block': block
+    }
+
+    return Location.from_dict(location_dict)
 
 
-def save_to_firestore(academy):
-    db = firestore.client()
-    db.collection(u'academies').add(academy.to_dict())
+def clear_collection(collection):
+    docs = collection.stream()
+    deleted = 0
+
+    for doc in docs:
+        doc.reference.delete()
+        deleted = deleted + 1
+
+    print(f'{deleted} documents deleted.')
+
+
+def save_to_firestore(collection, academy):
+    collection.add(academy.to_dict())
     print(f'{academy.name} is saved')
 
 
@@ -71,8 +91,12 @@ def main():
     academies = read_academies_from_json()
     for academy in academies:
         add_location_to_academy(academy, kakao_rest_api_key)
+
+    db = firestore.client()
+    collection = db.collection(u'academies')
+    clear_collection(collection)
     for academy in academies:
-        save_to_firestore(academy)
+        save_to_firestore(collection, academy)
 
 
 if __name__ == '__main__':
