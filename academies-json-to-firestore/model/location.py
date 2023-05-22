@@ -1,4 +1,9 @@
 class Location(object):
+    __LATITUDE = u'latitude'
+    __LONGITUDE = u'longitude'
+    __BLOCK = u'block'
+
+    # TODO: city, district 정보 추가
     def __init__(self, latitude: float, longitude: float, block: str):
         self.latitude = latitude
         self.longitude = longitude
@@ -6,15 +11,14 @@ class Location(object):
 
     @staticmethod
     def from_dict(source):
-        location = Location(source[u'latitude'], source[u'longitude'],
-                            source[u'block'])
-        return location
+        return Location(source[Location.__LATITUDE],
+                        source[Location.__LONGITUDE], source[Location.__BLOCK])
 
     def to_dict(self):
         location = {
-            u'latitude': self.latitude,
-            u'longitude': self.longitude,
-            u'block': self.block
+            Location.__LATITUDE: self.latitude,
+            Location.__LONGITUDE: self.longitude,
+            Location.__BLOCK: self.block
         }
         return location
 

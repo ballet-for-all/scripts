@@ -31,13 +31,13 @@ def get_kakao_rest_api_key():
 def read_academies_from_json():
     with open(ACADEMIES_JSON_FILE_PATH, 'r', encoding='utf-8') as jsonfile:
         json_data = json.load(jsonfile)
-        return [Academy(**academy) for academy in json_data]
+        return [Academy.from_dict(academy) for academy in json_data]
 
 
 def add_location_to_academy(academy, kakao_rest_api_key):
     address = academy.address
     location = search_location(address, kakao_rest_api_key)
-    academy.location = location
+    academy.setLocation(location)
 
 
 def search_location(address_str, kakao_rest_api_key):

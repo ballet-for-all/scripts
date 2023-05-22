@@ -1,22 +1,36 @@
 class Schedule(object):
+    __START_TIME = u'startTime'
+    __DURATION_IN_MINUTES = u'durationInMinutes'
+    __DAY = u'day'
+    __REQUIRED_KEYS = [__START_TIME, __DURATION_IN_MINUTES, __DAY]
+
     def __init__(self, startTime, durationInMinutes, day):
         self.startTime = startTime
-        self.durationInMinutes = durationInMinutes
+        self.durationInMinutes = int(durationInMinutes)
         self.day = day
 
     @staticmethod
     def from_dict(source):
-        schedule = Schedule(source[u'startTime'], source[u'durationInMinutes'],
-                            source[u'day'])
-        return schedule
+        if source == None:
+            return None
+        for key in Schedule.__REQUIRED_KEYS:
+            if source[key] == "" or source[key] == None:
+                return None
+
+        return Schedule(source[Schedule.__START_TIME],
+                        source[Schedule.__DURATION_IN_MINUTES],
+                        source[Schedule.__DAY])
 
     def to_dict(self):
         schedule = {
-            u'startTime': self.startTime,
-            u'durationInMinutes': self.durationInMinutes,
-            u'day': self.day
+            Schedule.__START_TIME: self.startTime,
+            Schedule.__DURATION_IN_MINUTES: self.durationInMinutes,
+            Schedule.__DAY: self.day
         }
         return schedule
+
+    def is_empty(self):
+        return not self.startTime or not self.durationInMinutes or not self.day
 
     def __repr__(self):
         return (f'Schedule('

@@ -1,4 +1,13 @@
 class Sns(object):
+    __KAKAO_TALK = u'kakaoTalk'
+    __NAVER_TALK_TALK = u'naverTalkTalk'
+    __HOMEPAGE = u'homepage'
+    __NAVER_BLOG = u'naverBlog'
+    __NAVER_CAFE = u'naverCafe'
+    __NAVER_MODOO = u'naverModoo'
+    __INSTAGRAM = u'instagram'
+    __FACEBOOK = u'facebook'
+
     def __init__(self, kakaoTalk, naverTalkTalk, homepage, naverBlog,
                  naverCafe, naverModoo, instagram, facebook):
         self.kakaoTalk = kakaoTalk
@@ -12,22 +21,22 @@ class Sns(object):
 
     @staticmethod
     def from_dict(source):
-        sns = Sns(source[u'kakaoTalk'], source[u'naverTalkTalk'],
-                  source[u'homepage'], source[u'naverBlog'],
-                  source[u'naverCafe'], source[u'naverModoo'],
-                  source[u'instagram'], source[u'facebook'])
+        sns = Sns(source[Sns.__KAKAO_TALK], source[Sns.__NAVER_TALK_TALK],
+                  source[Sns.__HOMEPAGE], source[Sns.__NAVER_BLOG],
+                  source[Sns.__NAVER_CAFE], source[Sns.__NAVER_MODOO],
+                  source[Sns.__INSTAGRAM], source[Sns.__FACEBOOK])
         return sns
 
     def to_dict(self):
         sns = {
-            u'kakaoTalk': self.kakaoTalk,
-            u'naverTalkTalk': self.naverTalkTalk,
-            u'homepage': self.homepage,
-            u'naverBlog': self.naverBlog,
-            u'naverCafe': self.naverCafe,
-            u'naverModoo': self.naverModoo,
-            u'instagram': self.instagram,
-            u'facebook': self.facebook
+            Sns.__KAKAO_TALK: self.kakaoTalk,
+            Sns.__NAVER_TALK_TALK: self.naverTalkTalk,
+            Sns.__HOMEPAGE: self.homepage,
+            Sns.__NAVER_BLOG: self.naverBlog,
+            Sns.__NAVER_CAFE: self.naverCafe,
+            Sns.__NAVER_MODOO: self.naverModoo,
+            Sns.__INSTAGRAM: self.instagram,
+            Sns.__FACEBOOK: self.facebook
         }
         return sns
 
