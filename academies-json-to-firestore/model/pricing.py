@@ -20,8 +20,8 @@ class Pricing(object):
         self.durationInMonth = durationInMonth
         self.classTimeInMinutes = classTimeInMinutes
         self.plan = plan
-        self.originalPrice = originalPrice
-        self.salePrice = salePrice
+        self.originalPrice = int(str(originalPrice).replace(',', ''))
+        self.salePrice = int(str(salePrice).replace(',', ''))
         self.discountPercent = discountPercent
 
     @staticmethod
