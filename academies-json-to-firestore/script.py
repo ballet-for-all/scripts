@@ -58,8 +58,8 @@ def search_location(address_str, kakao_rest_api_key):
     block = address['address']['region_3depth_name']
 
     location_dict = {
-        'longitude': lng,
-        'latitude': lat,
+        'lng': lng,
+        'lat': lat,
         'city': city,
         'district': district,
         'block': block

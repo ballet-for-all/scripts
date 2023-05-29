@@ -9,7 +9,7 @@ class Clazz(object):
 
     def __init__(self, className, classTag, schedules):
         self.className = className
-        self.classTag = classTag
+        self.classTag = [int(tag) for tag in str(classTag).split(',')]
         schedules = [Schedule.from_dict(schedule) for schedule in schedules]
         # Remove None or empty element in schedules
         self.schedules = [
