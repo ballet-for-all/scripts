@@ -5,3 +5,4 @@ credentials/**/*
 academies-json-to-firestore/*.json
 cities-csv-to-json/*.csv
 cities-csv-to-json/*.json
+search-academies/*.csv
