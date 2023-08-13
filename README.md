@@ -1,6 +1,6 @@
-# Firebase scripts
+# Scripts
 
-모두의 발레에서 사용될 Firebase 에 접근하는 스크립트입니다.
+모두의 발레에서 사용하는 스크립트입니다.
 
 ## Credentials
 
