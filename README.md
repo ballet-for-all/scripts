@@ -56,3 +56,31 @@ Firestore 접근을 위해 Firebase sevice account 파일이 필요합니다.
 ```bash
 $ python academies-json-to-firestore/script.py
 ```
+
+## search-academies
+
+카카오 지도 API를 이용하여 학원 정보를 검색합니다.
+
+서비스가 제공하는 위치 정보를 불러오기 위해 Firebase service account 파일이 필요합니다.
+
+카카오 지도 API를 이용하기 위해 kakao-key.json 파일이 필요합니다.
+
+### 사용법
+
+#### 캐시된 지역 좌표값을 이용하지 않는 경우
+
+첫 실행 및 Firestore의 Location 정보가 변경된 경우 캐시된 값을 사용하지 않도록 실행해야 합니다.
+
+Firestore의 Location 정보를 불러온 후 지역별 좌표값을 `coordinates.json` 파일에 저장합니다.
+
+```bash
+$ python search-academies/script.py
+```
+
+#### 캐시된 지역 좌표값을 이용하는 경우
+
+저장되어 있는 `coordinates.json` 파일의 값을 이용하여 바로 검색을 시작합니다.
+
+```bash
+$ python search-academies/script.py --use_cached_coordinates=true
+```
