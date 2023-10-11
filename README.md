@@ -18,13 +18,20 @@ kakao-key.json 파일은 모두의 발레 구글 드라이브의 개발 폴더�
 
 ## cities-csv-to-json
 
-전국행정동리스트 CSV 파일을 json 파일로 변환합니다.
+법정동명 CSV 파일을 json 파일로 변환합니다.
 
-전국행정동리스트 스프레드시트는 [여기](https://docs.google.com/spreadsheets/d/18miy3THIfF8-Rzdu23CtcsOxZXsZXAoG/edit?usp=sharing&ouid=106558524234893023284&rtpof=true&sd=true)에 있습니다.
+법정동명 스프레드시트는 [여기](https://docs.google.com/spreadsheets/d/18miy3THIfF8-Rzdu23CtcsOxZXsZXAoG/edit?usp=sharing&ouid=106558524234893023284&rtpof=true&sd=true)에 있습니다.
+
+가장 최근에 사용된 시트는 '법정동_20231011' 입니다.
+
+CSV에서 법정동명 리스트를 불러와 Kakao API를 이용하여 3단계로 나뉘어진 주소를 불러옵니다.
+3단계로 나뉜 주소를 city, district, block 으로 나누어 json 파일로 저장합니다.
+
+Kakao API를 이용하기 위해 kakao-key.json 파일이 필요합니다.
 
 ### 사용법
 
-전국행정도리스트 스프레드시트에서 Cities, Districts, Blocks 로 정렬한 시트를 CSV로 다운로드 합니다.
+법정동명 시트를 CSV로 다운로드 합니다.
 해당 파일을 cities-csv-to-json/cities.csv에 위치시킨 후 아래 명령어를 실행합니다.
 
 ```bash
@@ -34,6 +41,8 @@ $ python cities-csv-to-json/script.py
 ## cities-json-to-firestore
 
 cities-csv-to-json 으로 생성된 json 파일을 firestore 에 업로드 합니다.
+
+가장 최근에 업로드된 cities 정보는 'location-v2' 컬렉션에 저장되었습니다.
 
 Firestore 접근을 위해 Firebase sevice account 파일이 필요합니다.
 

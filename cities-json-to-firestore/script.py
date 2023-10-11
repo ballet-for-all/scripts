@@ -23,7 +23,7 @@ def read_cities_from_json():
 
 def save_to_firestore(data):
     db = firestore.client()
-    db.collection(u'location').document(u'cities').set({'cities': data})
+    db.collection(u'location-v2').document(u'cities').set({'cities': data})
 
 
 def main():
