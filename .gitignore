@@ -2,6 +2,8 @@
 
 credentials/**/*
 
+academies-csv-to-json/*.csv
+academies-csv-to-json/*.json
 academies-json-to-firestore/*.json
 cities-csv-to-json/*.csv
 cities-csv-to-json/*.json
