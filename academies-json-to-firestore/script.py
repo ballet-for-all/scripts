@@ -40,14 +40,28 @@ def add_location_to_academy(academy, kakao_rest_api_key):
     academy.setLocation(location)
 
 
-def search_location(address_str, kakao_rest_api_key):
+def search_address(address_str, kakao_rest_api_key):
     headers = {'Authorization': f'KakaoAK {kakao_rest_api_key}'}
     params = {'query': address_str}
     response = requests.get(ADDRESS_SEARCH_API, headers=headers, params=params)
     documents = response.json()['documents']
+    return documents
+
+
+def search_location(original_address_str, kakao_rest_api_key):
+    address_str = original_address_str
+    while True:
+        documents = search_address(address_str, kakao_rest_api_key)
+        if len(documents) > 0:
+            break
+        if len(address_str.split(' ')) == 1:
+            print(f'no address found for {original_address_str}')
+            break
+        address_str = address_str.rsplit(' ', 1)[0]
 
     if (len(documents) != 1):
-        print(f'address_str: {address_str} is not unique')
+        print(f'original_address_str: {original_address_str} is not unique')
+        print(f'documents: {documents}')
         return
 
     address = documents[0]
@@ -88,15 +102,21 @@ def main():
     initialize_firebase()
     kakao_rest_api_key = get_kakao_rest_api_key()
 
+    print('Reading academies from json...')
     academies = read_academies_from_json()
+    print(f'Total academies: {len(academies)}')
+    print('Adding location to academy...')
     for academy in academies:
+        print(f'Adding location to {academy.name}...')
         add_location_to_academy(academy, kakao_rest_api_key)
-
     db = firestore.client()
     collection = db.collection(u'academies')
+    print('Clearing academies collection...')
     clear_collection(collection)
+    print('Saving academies to firestore...')
     for academy in academies:
         save_to_firestore(collection, academy)
+    print('Done.')
 
 
 if __name__ == '__main__':
