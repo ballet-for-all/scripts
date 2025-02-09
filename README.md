@@ -2,6 +2,28 @@
 
 모두의 발레에서 사용하는 스크립트입니다.
 
+## Python
+
+Python 3.13.2 버전을 사용합니다.
+편리한 버전 관리를 위해 [pyenv](https://github.com/pyenv/pyenv) 사용을 권장합니다.
+
+### venv
+
+Python 가상환경을 사용하여 패키지 의존성을 관리하는 것을 추천합니다.
+
+```bash
+$ python -m venv {원하는 가상환경 이름}
+$ source {원하는 가상환경 이름}/bin/activate
+```
+
+VSCode를 사용하는 경우 옵션을 통해 생성한 venv를 간편하게 사용할 수 있습니다.
+
+### 패키지 설치
+
+```bash
+$ pip install -r requirements.txt
+```
+
 ## Credentials
 
 ### Firebase
@@ -22,7 +44,7 @@ kakao-key.json 파일은 모두의 발레 구글 드라이브의 개발 폴더�
 
 법정동명 스프레드시트는 [여기](https://docs.google.com/spreadsheets/d/18miy3THIfF8-Rzdu23CtcsOxZXsZXAoG/edit?usp=sharing&ouid=106558524234893023284&rtpof=true&sd=true)에 있습니다.
 
-가장 최근에 사용된 시트는 '법정동_20231011' 입니다.
+가장 최근에 사용된 시트는 '법정동\_20231011' 입니다.
 
 CSV에서 법정동명 리스트를 불러와 Kakao API를 이용하여 3단계로 나뉘어진 주소를 불러옵니다.
 3단계로 나뉜 주소를 city, district, block 으로 나누어 json 파일로 저장합니다.
