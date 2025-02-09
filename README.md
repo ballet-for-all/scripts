@@ -38,7 +38,7 @@ kakao-key.json 파일은 모두의 발레 구글 드라이브의 개발 폴더�
 
 다운로드 후 `credentials/kakao/kakao-key.json` 에 위치시키면 됩니다.
 
-## cities-csv-to-json
+## cities-csv-to-json [Deprecated]
 
 법정동명 CSV 파일을 json 파일로 변환합니다.
 
@@ -58,6 +58,20 @@ Kakao API를 이용하기 위해 kakao-key.json 파일이 필요합니다.
 
 ```bash
 $ python cities-csv-to-json/script.py
+```
+
+## cities-firestore-to-json
+
+> Google drive `모두의 발레/개발` 폴더에 `cities.json` 파일이 존재할 경우 이 스크립트를 실행하지 말고 해당 파일을 사용하시면 됩니다.
+
+임시로 Firestore에 저장된 cities 정보를 `cities.json` 파일로 저장합니다.
+
+Firestore 접근을 위해 Firebase sevice account 파일이 필요합니다.
+
+### 사용법
+
+```bash
+$ python cities-firestore-to-json/script.py
 ```
 
 ## cities-json-to-firestore
