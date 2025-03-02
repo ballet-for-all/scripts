@@ -9,3 +9,6 @@ cities-firestore-to-json/*.json
 cities-csv-to-json/*.csv
 cities-csv-to-json/*.json
 search-academies/*.csv
+
+# macOS
+.DS_Store
